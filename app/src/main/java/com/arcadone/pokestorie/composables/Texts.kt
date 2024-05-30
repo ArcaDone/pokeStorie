@@ -7,9 +7,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import com.arcadone.pokestorie.ui.theme.PokeStorieAppTheme
 import com.arcadone.pokestorie.ui.theme.ThemeDS
 
@@ -21,9 +23,11 @@ fun PText(
     overflow: TextOverflow = TextOverflow.Clip,
     maxLines: Int = Int.MAX_VALUE,
     softWrap: Boolean = true,
+    fontSize: TextUnit = TextUnit.Unspecified,
     textAlign: TextAlign = TextAlign.Start,
     style: TextStyle = ThemeDS.typography.heading,
     color: Color = ThemeDS.colors.black,
+    fontWeight: FontWeight = FontWeight.Normal
 ) {
     val textValue = textResources?.let { stringResource(id = textResources) } ?: text
     Text(
@@ -34,7 +38,9 @@ fun PText(
         color = color,
         maxLines = maxLines,
         softWrap = softWrap,
-        overflow = overflow
+        overflow = overflow,
+        fontSize = fontSize,
+        fontWeight = fontWeight
     )
 }
 

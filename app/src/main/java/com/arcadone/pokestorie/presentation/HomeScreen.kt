@@ -23,7 +23,7 @@ import com.arcadone.pokestorie.composables.ModalBottomSheetDialog
 import com.arcadone.pokestorie.composables.OverlayLoader
 import com.arcadone.pokestorie.composables.SearchingBar
 import com.arcadone.pokestorie.composables.SuccessContent
-import com.arcadone.pokestorie.ui.theme.largeRadialGradient
+import com.arcadone.pokestorie.ui.theme.ThemeDS
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -70,7 +70,7 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
             Box(
                 Modifier
                     .fillMaxSize()
-                    .background(largeRadialGradient)
+                    .background(ThemeDS.colors.white)
                     .padding(paddingValues)
             ) {
                 when (uiState) {

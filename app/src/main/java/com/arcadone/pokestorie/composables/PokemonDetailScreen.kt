@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -30,14 +31,13 @@ import com.arcadone.pokestorie.domain.model.PokemonInfo
 import com.arcadone.pokestorie.ui.theme.PokeStorieAppTheme
 import com.arcadone.pokestorie.ui.theme.Shapes
 import com.arcadone.pokestorie.ui.theme.ThemeDS
-import com.arcadone.pokestorie.ui.theme.largeRadialGradient
 
 @Composable
 fun PokemonDetailScreen(pokemonInfo: PokemonInfo) {
 
     LazyColumn(
         modifier = Modifier
-            .background(largeRadialGradient)
+            .background(ThemeDS.colors.white)
             .fillMaxSize()
             .padding(vertical = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -60,8 +60,8 @@ fun PokemonDetailScreen(pokemonInfo: PokemonInfo) {
 
         item {
             PText(
-                color = ThemeDS.colors.white,
-                text = pokemonInfo.name,
+                color = ThemeDS.colors.black,
+                text = pokemonInfo.name.capitalize(Locale.current),
                 style = ThemeDS.typography.headingLarge,
                 modifier = Modifier.padding(vertical = 8.dp)
             )
@@ -72,9 +72,9 @@ fun PokemonDetailScreen(pokemonInfo: PokemonInfo) {
                 SectionTitle(title = "Description")
                 PText(
                     color = ThemeDS.colors.lightSea,
-                    text = pokemonInfo.description,
+                    text = pokemonInfo.description.replace("\n", ""),
                     style = ThemeDS.typography.label,
-                    modifier = Modifier.padding(all = 8.dp)
+                    modifier = Modifier.padding(all = 8.dp).fillMaxWidth()
                 )
             }
         }
@@ -95,7 +95,7 @@ fun PokemonDetailScreen(pokemonInfo: PokemonInfo) {
                 Column(modifier = Modifier.padding(vertical = 8.dp)) {
                     pokemonInfo.abilities.forEach { ability ->
                         PText(
-                            color = ThemeDS.colors.lightSea,
+                            color = ThemeDS.colors.black,
                             text = ability,
                             style = ThemeDS.typography.label,
                             modifier = Modifier.padding(vertical = 4.dp)
@@ -126,7 +126,7 @@ fun PokemonDetailScreen(pokemonInfo: PokemonInfo) {
                 Column(modifier = Modifier.padding(vertical = 8.dp)) {
                     pokemonInfo.baseStats.forEach { (stat, value) ->
                         PText(
-                            color = ThemeDS.colors.lightSea,
+                            color = ThemeDS.colors.black,
                             text = "${value.name.capitalize(Locale.current)} : $stat",
                             style = ThemeDS.typography.label,
                             modifier = Modifier.padding(vertical = 4.dp)
@@ -142,7 +142,7 @@ fun PokemonDetailScreen(pokemonInfo: PokemonInfo) {
                 Column(modifier = Modifier.padding(vertical = 8.dp)) {
                     pokemonInfo.evolutionChain.forEach { evolution ->
                         PText(
-                            color = ThemeDS.colors.lightSea,
+                            color = ThemeDS.colors.black,
                             text = "${evolution.name?.capitalize(Locale.current)} (Level ${evolution.minLevel} via ${evolution.trigger})",
                             style = ThemeDS.typography.label,
                             modifier = Modifier.padding(vertical = 4.dp)

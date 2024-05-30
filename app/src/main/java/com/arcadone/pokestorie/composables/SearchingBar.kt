@@ -41,7 +41,7 @@ fun SearchingBar(
         Modifier
             .then(modifier)
             .fillMaxWidth()
-            .background(ThemeDS.colors.primary)
+            .background(ThemeDS.colors.white)
             .padding(16.dp)
             .semantics { isTraversalGroup = true }
     ) {
@@ -50,14 +50,14 @@ fun SearchingBar(
                 .align(Alignment.TopCenter)
                 .semantics { traversalIndex = -1f },
             colors = SearchBarDefaults.colors(
-                containerColor = ThemeDS.colors.lightBlue,
-                dividerColor = ThemeDS.colors.orange
+                containerColor = ThemeDS.colors.grey06,
+                dividerColor = ThemeDS.colors.grey02
             ),
             inputField = {
                 SearchBarDefaults.InputField(
                     query = text,
                     colors = SearchBarDefaults.inputFieldColors()
-                        .copy(focusedTextColor = ThemeDS.colors.orange),
+                        .copy(focusedTextColor = ThemeDS.colors.grey02),
                     onQueryChange = { text = it },
                     onSearch = {
                         onClickSearch(it)
@@ -68,9 +68,9 @@ fun SearchingBar(
                     placeholder = {
                         if (text.isEmpty()) {
                             PText(
-                                color = ThemeDS.colors.orange,
+                                color = ThemeDS.colors.grey02,
                                 style = ThemeDS.typography.label.copy(fontWeight = FontWeight.Normal),
-                                text = "Search by name or Id"
+                                text = "Search name or Type"
                             )
                         }
                     },
@@ -78,7 +78,7 @@ fun SearchingBar(
                         Icon(
                             Icons.Default.Search,
                             contentDescription = null,
-                            tint = ThemeDS.colors.orange
+                            tint = ThemeDS.colors.grey02
                         )
                     },
                 )
